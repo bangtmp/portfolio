@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Huỳnh Hữu Bằng | Fullstack Developer</title>
+    <meta
+      name="description"
+      content="Portfolio cá nhân của Huỳnh Hữu Bằng - Sinh viên năm nhất ngành Công nghệ thông tin, đam mê lập trình web và thiết kế giao diện, định hướng trở thành Fullstack Developer chuyên nghiệp."
+    />
+
+    <!-- Favicon placeholder: thay bằng favicon riêng của bạn tại thư mục assets/ -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23FFD166%22/><text x=%2250%%22 y=%2265%%22 font-size=%2255%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-weight=%22bold%22>H</text></svg>"
+    />
+
+    <!-- Google Fonts: Space Grotesk (display) + Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome cho icon mạng xã hội -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+      integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ======================= NAVIGATION ======================= -->
+    <header class="navbar" id="navbar">
+      <nav class="nav-container">
+        <a href="#trang-chu" class="logo">HHB<span class="logo-dot">.</span></a>
+
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Mở menu điều hướng"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#trang-chu" class="nav-link">Trang chủ</a></li>
+          <li><a href="#gioi-thieu" class="nav-link">Giới thiệu</a></li>
+          <li><a href="#ky-nang" class="nav-link">Kỹ năng</a></li>
+          <li><a href="#du-an" class="nav-link">Dự án</a></li>
+          <li><a href="#lien-he" class="nav-link nav-link--cta">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ======================= HERO SECTION ======================= -->
+      <section id="trang-chu" class="hero">
+        <!-- Hình trang trí Neo-brutalism -->
+        <div class="hero-shape hero-shape--circle" aria-hidden="true"></div>
+        <div class="hero-shape hero-shape--square" aria-hidden="true"></div>
+        <div class="hero-shape hero-shape--triangle" aria-hidden="true"></div>
+
+        <div class="hero-container">
+          <div class="hero-text fade-up">
+            <span class="badge"
+              >🟢 Available for learning &amp; collaboration</span
+            >
+            <p class="hero-greeting">Xin chào, tôi là</p>
+            <h1 class="hero-title">Huỳnh Hữu Bằng</h1>
+            <p class="hero-role">
+              Sinh viên Công nghệ thông tin | Fullstack Developer tương lai
+            </p>
+            <p class="hero-desc">
+              Tôi yêu thích lập trình web, thiết kế giao diện và khám phá các
+              công nghệ mới. Tôi đang từng bước xây dựng kỹ năng để trở thành
+              một Fullstack Developer chuyên nghiệp.
+            </p>
+            <div class="hero-actions">
+              <a href="#du-an" class="btn btn-primary">Xem dự án</a>
+              <a href="#lien-he" class="btn btn-secondary">Liên hệ với tôi</a>
+            </div>
+          </div>
+
+          <div class="hero-avatar-wrap fade-up">
+            <div class="avatar-frame">
+              <!-- Thay ảnh đại diện tại đây: chèn thẻ <img src="assets/avatar.jpg" alt="Ảnh đại diện Huỳnh Hữu Bằng"> -->
+              <div class="avatar-placeholder">
+                <i class="fa-solid fa-code" aria-hidden="true"></i>
+                <span>Ảnh đại diện</span>
+              </div>
+            </div>
+            <div class="avatar-sticker avatar-sticker--1">&lt;/&gt;</div>
+            <div class="avatar-sticker avatar-sticker--2">HTML · CSS · JS</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= GIỚI THIỆU ======================= -->
+      <section id="gioi-thieu" class="section about">
+        <div class="section-container">
+          <h2 class="section-title fade-up">
+            <span class="title-mark">01</span> Giới thiệu về tôi
+          </h2>
+
+          <div class="about-grid">
+            <div class="about-card fade-up">
+              <h3>Xin chào! 👋</h3>
+              <p>
+                Tôi là Huỳnh Hữu Bằng, sinh viên năm nhất ngành Công nghệ thông
+                tin. Tôi yêu thích phát triển website và thiết kế giao diện,
+                luôn tò mò tìm hiểu những công nghệ mới trong lĩnh vực lập
+                trình.
+              </p>
+              <p>
+                Hiện tại tôi đang học HTML, CSS, JavaScript cùng các kiến thức
+                lập trình nền tảng để xây dựng nền móng vững chắc cho con đường
+                trở thành một Fullstack Developer chuyên nghiệp.
+              </p>
+            </div>
+
+            <div class="about-card about-card--accent fade-up">
+              <h3>Mục tiêu của tôi 🎯</h3>
+              <ul class="about-list">
+                <li>
+                  <i class="fa-solid fa-check"></i> Trở thành Front-end / Web
+                  Developer chuyên nghiệp
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Không ngừng học hỏi và trau
+                  dồi kỹ năng lập trình
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Tham gia các dự án thực tế
+                  để tích lũy kinh nghiệm
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i> Kết nối với cộng đồng lập
+                  trình viên
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= KỸ NĂNG ======================= -->
+      <section id="ky-nang" class="section skills">
+        <div class="section-container">
+          <h2 class="section-title fade-up">
+            <span class="title-mark">02</span> Kỹ năng
+          </h2>
+          <p class="section-subtitle fade-up">
+            Những công nghệ và kỹ năng tôi đang trau dồi mỗi ngày.
+          </p>
+
+          <div class="skills-grid">
+            <div class="skill-card fade-up">
+              <i class="fa-brands fa-html5 skill-icon" aria-hidden="true"></i>
+              <h3>HTML5</h3>
+              <span class="skill-tag skill-tag--build"
+                >Có thể xây dựng dự án</span
+              >
+            </div>
+
+            <div class="skill-card fade-up">
+              <i
+                class="fa-brands fa-css3-alt skill-icon"
+                aria-hidden="true"
+              ></i>
+              <h3>CSS3</h3>
+              <span class="skill-tag skill-tag--build"
+                >Có thể xây dựng dự án</span
+              >
+            </div>
+
+            <div class="skill-card fade-up">
+              <i class="fa-brands fa-js skill-icon" aria-hidden="true"></i>
+              <h3>JavaScript</h3>
+              <span class="skill-tag skill-tag--build"
+                >Có thể xây dựng dự án</span
+              >
+            </div>
+
+            <div class="skill-card fade-up">
+              <i
+                class="fa-solid fa-mobile-screen-button skill-icon"
+                aria-hidden="true"
+              ></i>
+              <h3>Responsive Web Design</h3>
+              <span class="skill-tag skill-tag--build"
+                >Có thể xây dựng dự án</span
+              >
+            </div>
+
+            <div class="skill-card fade-up">
+              <i
+                class="fa-brands fa-typescript skill-icon"
+                aria-hidden="true"
+              ></i>
+              <h3>TypeScript</h3>
+              <span class="skill-tag skill-tag--basic">Cơ bản</span>
+            </div>
+
+            <div class="skill-card fade-up">
+              <i class="fa-brands fa-git-alt skill-icon" aria-hidden="true"></i>
+              <h3>Git &amp; GitHub</h3>
+              <span class="skill-tag skill-tag--basic">Cơ bản</span>
+            </div>
+
+            <div class="skill-card fade-up">
+              <i
+                class="fa-solid fa-pen-ruler skill-icon"
+                aria-hidden="true"
+              ></i>
+              <h3>UI/UX cơ bản</h3>
+              <span class="skill-tag skill-tag--learning">Đang học</span>
+            </div>
+
+            <div class="skill-card fade-up">
+              <i class="fa-solid fa-terminal skill-icon" aria-hidden="true"></i>
+              <h3>C/C++</h3>
+              <span class="skill-tag skill-tag--learning">Đang học</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= DỰ ÁN ======================= -->
+      <section id="du-an" class="section projects">
+        <div class="section-container">
+          <h2 class="section-title fade-up">
+            <span class="title-mark">03</span> Dự án
+          </h2>
+          <p class="section-subtitle fade-up">
+            Một số dự án tôi đã thực hiện và đang phát triển.
+          </p>
+
+          <div class="projects-grid">
+            <!-- ===== BẮT ĐẦU: PROJECT CARD (sao chép khối này để thêm dự án mới) ===== -->
+            <article class="project-card fade-up">
+              <div class="project-thumb">
+                <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+              </div>
+              <div class="project-body">
+                <h3 class="project-title">TmpBox.me</h3>
+                <p class="project-desc">
+                  Hệ thống upload và chia sẻ file trực tuyến, giúp người dùng
+                  tải file lên và chia sẻ thông qua đường dẫn.
+                </p>
+                <ul class="project-tech">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>Next.js</li>
+                  <li>MongoDB</li>
+                </ul>
+                <div class="project-actions">
+                  <a
+                    href="https://tmpbox.me"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary btn-sm"
+                  >
+                    Xem website
+                  </a>
+                  <!-- Chưa có link GitHub cụ thể: thay dấu # bằng link repo thật của bạn -->
+                  <a href="#" class="btn btn-outline btn-sm"> Xem mã nguồn </a>
+                </div>
+              </div>
+            </article>
+            <!-- ===== KẾT THÚC: PROJECT CARD ===== -->
+
+            <!-- Gợi ý: sao chép <article class="project-card">...</article> ở trên
+               và thay đổi nội dung để thêm dự án mới vào đây -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= LIÊN HỆ ======================= -->
+      <section id="lien-he" class="section contact">
+        <div class="section-container">
+          <h2 class="section-title fade-up">
+            <span class="title-mark">04</span> Hãy kết nối với tôi
+          </h2>
+          <p class="section-subtitle fade-up">
+            Bạn có dự án hay muốn trao đổi, học hỏi cùng nhau? Hãy để lại lời
+            nhắn cho tôi!
+          </p>
+
+          <div class="contact-grid">
+            <form id="contact-form" class="contact-form fade-up" novalidate>
+              <div class="form-group">
+                <label for="name">Họ và tên</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Nguyễn Văn A"
+                  required
+                />
+                <span class="form-error" id="name-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="[email protected]"
+                  required
+                />
+                <span class="form-error" id="email-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Chủ đề</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  placeholder="Trao đổi về dự án..."
+                  required
+                />
+                <span class="form-error" id="subject-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Nội dung tin nhắn</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Nội dung bạn muốn gửi..."
+                  required
+                ></textarea>
+                <span class="form-error" id="message-error"></span>
+              </div>
+
+              <!--
+              Ghi chú tích hợp backend gửi email thật:
+              - Formspree: đổi thẻ <form> thành action="https://formspree.io/f/xxxxxx" method="POST"
+              - EmailJS: dùng emailjs.sendForm('service_id', 'template_id', this) trong script.js
+              - Hoặc backend riêng: gửi dữ liệu bằng fetch('/api/contact', { method: 'POST', body: ... })
+              Hiện tại website tĩnh, form chỉ mô phỏng gửi thành công trên giao diện.
+            -->
+
+              <button type="submit" class="btn btn-primary btn-block">
+                Gửi tin nhắn <i class="fa-solid fa-paper-plane"></i>
+              </button>
+
+              <p
+                class="form-success"
+                id="form-success"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+
+            <div class="contact-social fade-up">
+              <h3>Kết nối với tôi qua</h3>
+              <div class="social-links">
+                <!-- Thay # bằng link GitHub thật của bạn -->
+                <a
+                  href="#"
+                  class="social-link"
+                  aria-label="GitHub của Huỳnh Hữu Bằng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                  <span>GitHub</span>
+                </a>
+                <!-- Thay # bằng link LinkedIn thật của bạn -->
+                <a
+                  href="#"
+                  class="social-link"
+                  aria-label="LinkedIn của Huỳnh Hữu Bằng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                  <span>LinkedIn</span>
+                </a>
+                <!-- Thay bằng email thật của bạn -->
+                <a
+                  href="mailto:[email protected]"
+                  class="social-link"
+                  aria-label="Gửi email cho Huỳnh Hữu Bằng"
+                >
+                  <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                  <span>Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <p>&copy; 2026 Huỳnh Hữu Bằng. All rights reserved.</p>
+          <p class="footer-tagline">Designed and built with passion.</p>
+        </div>
+
+        <div class="footer-social">
+          <a
+            href="#"
+            aria-label="GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a
+            href="#"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+        </div>
+
+        <button
+          id="back-to-top"
+          class="back-to-top"
+          aria-label="Quay lại đầu trang"
+        >
+          <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+        </button>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
