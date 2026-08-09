@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +8,47 @@
       name="description"
       content="Portfolio cá nhân của Huỳnh Hữu Bằng - Sinh viên năm nhất ngành Công nghệ thông tin, đam mê lập trình web và thiết kế giao diện, định hướng trở thành Fullstack Developer chuyên nghiệp."
     />
+    <meta name="theme-color" content="#fff8e7" />
+
+    <!-- Áp chế độ tối sớm để tránh nhấp nháy trắng khi tải trang -->
+    <script>
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+
+    <link rel="canonical" href="https://github.com/bangtmp/portfolio" />
+
+    <!-- Open Graph / Twitter Card: hiển thị đẹp khi chia sẻ lên mạng xã hội -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://github.com/bangtmp/portfolio" />
+    <meta property="og:title" content="Huỳnh Hữu Bằng | Fullstack Developer" />
+    <meta
+      property="og:description"
+      content="Portfolio cá nhân của Huỳnh Hữu Bằng - Sinh viên năm nhất ngành Công nghệ thông tin, đam mê lập trình web và thiết kế giao diện."
+    />
+    <!-- Kích thước khuyến nghị 1200x630, thay bằng ảnh thật sau khi deploy -->
+    <meta property="og:image" content="assets/og-image.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Huỳnh Hữu Bằng | Fullstack Developer" />
+    <meta
+      name="twitter:description"
+      content="Portfolio cá nhân của Huỳnh Hữu Bằng - Sinh viên năm nhất ngành Công nghệ thông tin."
+    />
+
+    <!-- Structured data: giúp Google hiểu đây là hồ sơ cá nhân -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Huỳnh Hữu Bằng",
+        "url": "https://github.com/bangtmp/portfolio",
+        "email": "mailto:bangvn71@gmail.com",
+        "sameAs": ["https://github.com/bangtmp"],
+        "jobTitle": "Sinh viên Công nghệ thông tin",
+        "knowsAbout": ["HTML", "CSS", "JavaScript", "TypeScript"]
+      }
+    </script>
 
     <!-- Favicon placeholder: thay bằng favicon riêng của bạn tại thư mục assets/ -->
     <link
@@ -40,18 +81,6 @@
       <nav class="nav-container">
         <a href="#trang-chu" class="logo">HHB<span class="logo-dot">.</span></a>
 
-        <button
-          class="hamburger"
-          id="hamburger"
-          aria-label="Mở menu điều hướng"
-          aria-expanded="false"
-          aria-controls="nav-menu"
-        >
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-        </button>
-
         <ul class="nav-menu" id="nav-menu">
           <li><a href="#trang-chu" class="nav-link">Trang chủ</a></li>
           <li><a href="#gioi-thieu" class="nav-link">Giới thiệu</a></li>
@@ -59,6 +88,32 @@
           <li><a href="#du-an" class="nav-link">Dự án</a></li>
           <li><a href="#lien-he" class="nav-link nav-link--cta">Liên hệ</a></li>
         </ul>
+
+        <div class="nav-actions">
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Chuyển chế độ sáng / tối"
+            aria-pressed="false"
+            title="Đổi màu nền trang"
+          >
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+            <i class="fa-solid fa-sun" aria-hidden="true"></i>
+          </button>
+
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Mở menu điều hướng"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
       </nav>
     </header>
 
@@ -280,8 +335,8 @@
                   <button
                     class="btn btn-outline btn-sm btn--locked"
                     type="button"
+                    disabled
                     title="Mã nguồn dự án không được công khai"
-                    aria-disabled="true"
                   >
                     <i class="fa-solid fa-lock" aria-hidden="true"></i>
                     Mã nguồn riêng tư
@@ -290,6 +345,62 @@
               </div>
             </article>
             <!-- ===== KẾT THÚC: PROJECT CARD ===== -->
+
+            <!-- Placeholder: xóa khi có dự án thật -->
+            <article class="project-card project-card--placeholder fade-up">
+              <div class="project-thumb">
+                <i class="fa-solid fa-code" aria-hidden="true"></i>
+              </div>
+              <div class="project-body">
+                <h3 class="project-title">Dự án đang phát triển</h3>
+                <p class="project-desc">
+                  Một ý tưởng đang được mình ấp ủ. Sẽ sớm được cập nhật tại đây
+                  ngay khi hoàn thành.
+                </p>
+                <ul class="project-tech">
+                  <li>Coming soon</li>
+                </ul>
+                <div class="project-actions">
+                  <button
+                    class="btn btn-outline btn-sm btn--locked"
+                    type="button"
+                    disabled
+                    title="Chưa có link để chia sẻ"
+                  >
+                    <i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>
+                    Sắp ra mắt
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Placeholder: xóa khi có dự án thật -->
+            <article class="project-card project-card--placeholder fade-up">
+              <div class="project-thumb">
+                <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+              </div>
+              <div class="project-body">
+                <h3 class="project-title">Dự án tiếp theo</h3>
+                <p class="project-desc">
+                  Dự án tiếp theo trên hành trình học lập trình của mình. Quay
+                  lại thường xuyên để theo dõi nhé!
+                </p>
+                <ul class="project-tech">
+                  <li>Coming soon</li>
+                </ul>
+                <div class="project-actions">
+                  <button
+                    class="btn btn-outline btn-sm btn--locked"
+                    type="button"
+                    disabled
+                    title="Chưa có link để chia sẻ"
+                  >
+                    <i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>
+                    Sắp ra mắt
+                  </button>
+                </div>
+              </div>
+            </article>
 
             <!-- Gợi ý: sao chép <article class="project-card">...</article> ở trên
                và thay đổi nội dung để thêm dự án mới vào đây -->
@@ -359,11 +470,12 @@
               </div>
 
               <!--
-              Ghi chú tích hợp backend gửi email thật:
-              - Formspree: đổi thẻ <form> thành action="https://formspree.io/f/xxxxxx" method="POST"
-              - EmailJS: dùng emailjs.sendForm('service_id', 'template_id', this) trong script.js
-              - Hoặc backend riêng: gửi dữ liệu bằng fetch('/api/contact', { method: 'POST', body: ... })
-              Hiện tại website tĩnh, form chỉ mô phỏng gửi thành công trên giao diện.
+              Form gửi tin nhắn thật qua FormSubmit (không cần đăng ký):
+              - script.js POST dữ liệu lên https://formsubmit.co/bangvn71@gmail.com
+              - Lần gửi đầu tiên FormSubmit sẽ gửi email xác nhận, bấm nút trong
+                email đó để kích hoạt, sau đó mọi tin nhắn đều chuyển về email.
+              - Muốn dùng dịch vụ khác (Formspree/EmailJS), đổi FORM_ENDPOINT
+                trong script.js.
             -->
 
               <button type="submit" class="btn btn-primary btn-block">
@@ -381,7 +493,6 @@
             <div class="contact-social fade-up">
               <h3>Kết nối với tôi qua</h3>
               <div class="social-links">
-                <!-- Thay # bằng link GitHub thật của bạn -->
                 <a
                   href="https://github.com/bangtmp"
                   class="social-link"
@@ -392,18 +503,6 @@
                   <i class="fa-brands fa-github" aria-hidden="true"></i>
                   <span>GitHub</span>
                 </a>
-                <!-- Thay # bằng link LinkedIn thật của bạn -->
-                <a
-                  href="#"
-                  class="social-link"
-                  aria-label="LinkedIn của Huỳnh Hữu Bằng"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-                  <span>LinkedIn</span>
-                </a>
-                <!-- Thay bằng email thật của bạn -->
                 <a
                   href="mailto:bangvn71@gmail.com"
                   class="social-link"
@@ -429,18 +528,11 @@
 
         <div class="footer-social">
           <a
-            href="#"
+            href="https://github.com/bangtmp"
             aria-label="GitHub"
             target="_blank"
             rel="noopener noreferrer"
             ><i class="fa-brands fa-github"></i
-          ></a>
-          <a
-            href="#"
-            aria-label="LinkedIn"
-            target="_blank"
-            rel="noopener noreferrer"
-            ><i class="fa-brands fa-linkedin"></i
           ></a>
         </div>
 

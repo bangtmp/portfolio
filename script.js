@@ -4,6 +4,12 @@
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
+  /* Đánh dấu trang có JS hoạt động:
+     - CSS dùng .no-js / .js để quyết định có ẩn nội dung chờ animation hay không
+     - Nếu JS không chạy được, nội dung vẫn hiển thị bình thường */
+  document.documentElement.classList.remove("no-js");
+  document.documentElement.classList.add("js");
+
   /* ---------------------------------------------------------
      1. MENU HAMBURGER (MOBILE)
   --------------------------------------------------------- */
@@ -30,10 +36,67 @@ document.addEventListener("DOMContentLoaded", () => {
     navLinks.forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
+
+    // Đóng menu khi bấm phím Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    // Đóng menu khi bấm ra ngoài menu
+    document.addEventListener("click", (e) => {
+      if (
+        navMenu.classList.contains("is-open") &&
+        !navMenu.contains(e.target) &&
+        !hamburger.contains(e.target)
+      ) {
+        closeMenu();
+      }
+    });
   }
 
   /* ---------------------------------------------------------
-     2. CUỘN MƯỢT ĐẾN SECTION (bổ sung cho scroll-behavior CSS
+     2. NÚT ĐỔI CHẾ ĐỘ MÀU (SÁNG / TỐI)
+        - Mặc định: nền trắng (chế độ sáng)
+        - Bấm nút để chuyển chế độ, lựa chọn được lưu trong localStorage
+  --------------------------------------------------------- */
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+  const setTheme = (theme) => {
+    const isDark = theme === "dark";
+    document.documentElement.classList.toggle("dark", isDark);
+
+    if (themeToggle) {
+      themeToggle.setAttribute("aria-pressed", String(isDark));
+    }
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute("content", isDark ? "#15171b" : "#fff8e7");
+    }
+
+    try {
+      localStorage.setItem("theme", theme);
+    } catch (err) {
+      /* localStorage không khả dụng thì bỏ qua */
+    }
+  };
+
+  if (themeToggle) {
+    // Đồng bộ trạng thái đã được áp dụng sớm ở <head> (tránh nhấp nháy)
+    setTheme(
+      document.documentElement.classList.contains("dark") ? "dark" : "light",
+    );
+
+    themeToggle.addEventListener("click", () => {
+      const next =
+        document.documentElement.classList.contains("dark")
+          ? "light"
+          : "dark";
+      setTheme(next);
+    });
+  }
+
+  /* ---------------------------------------------------------
+     3. CUỘN MƯỢT ĐẾN SECTION (bổ sung cho scroll-behavior CSS
         để đảm bảo hoạt động tốt trên mọi trình duyệt)
   --------------------------------------------------------- */
   navLinks.forEach((link) => {
@@ -50,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ---------------------------------------------------------
-     3. ANIMATION FADE-IN-UP KHI CUỘN TỚI (IntersectionObserver)
+     4. ANIMATION FADE-IN-UP KHI CUỘN TỚI (IntersectionObserver)
   --------------------------------------------------------- */
   const fadeElements = document.querySelectorAll(".fade-up");
 
@@ -77,24 +140,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ---------------------------------------------------------
-     3b. SCROLL-SPY: đổi trạng thái active của menu khi chuyển section
+     4b. SCROLL-SPY: đổi trạng thái active của menu khi chuyển section
   --------------------------------------------------------- */
   const allSections = document.querySelectorAll("section[id]");
-  const navLinksById = {};
-
-  navLinks.forEach((link) => {
-    const href = link.getAttribute("href");
-    if (href && href.startsWith("#")) {
-      navLinksById[href.slice(1)] = link;
-    }
-  });
 
   const setActiveLink = (sectionId) => {
-    navLinks.forEach((link) => link.classList.remove("is-active"));
-    const activeLink = navLinksById[sectionId];
-    if (activeLink) {
-      activeLink.classList.add("is-active");
-    }
+    navLinks.forEach((link) => {
+      const isActive = link.getAttribute("href") === `#${sectionId}`;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
   };
 
   if ("IntersectionObserver" in window && allSections.length) {
@@ -119,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ---------------------------------------------------------
-     4. NÚT QUAY LẠI ĐẦU TRANG
+     5. NÚT QUAY LẠI ĐẦU TRANG
   --------------------------------------------------------- */
   const backToTopBtn = document.getElementById("back-to-top");
 
@@ -130,7 +189,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ---------------------------------------------------------
-     5. FORM LIÊN HỆ - KIỂM TRA DỮ LIỆU & THÔNG BÁO GỬI THÀNH CÔNG
+     6. XỬ LÝ KHI CUỘN TRANG
+        - Navbar: thêm bóng đổ khi cuộn (class is-scrolled)
+        - Back-to-top: chỉ hiện sau khi cuộn > 400px
+  --------------------------------------------------------- */
+  const navbar = document.getElementById("navbar");
+
+  const handleScroll = () => {
+    const y = window.scrollY;
+    navbar.classList.toggle("is-scrolled", y > 10);
+    if (backToTopBtn) {
+      backToTopBtn.classList.toggle("is-visible", y > 400);
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll();
+
+  /* ---------------------------------------------------------
+     7. FORM LIÊN HỆ - KIỂM TRA DỮ LIỆU & GỬI EMAIL THẬT
   --------------------------------------------------------- */
   const contactForm = document.getElementById("contact-form");
   const formSuccess = document.getElementById("form-success");
@@ -189,6 +266,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -205,63 +284,47 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      /*
-        ------------------------------------------------------
-        TÍCH HỢP GỬI EMAIL THẬT (chọn 1 trong các cách sau):
+      const showStatus = (message, isError = false) => {
+        formSuccess.textContent = message;
+        formSuccess.classList.toggle("is-error", isError);
+        formSuccess.classList.add("show");
+      };
 
-        1) Formspree:
-           - Đổi <form id="contact-form"> thành:
-             action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
-           - Xoá đoạn e.preventDefault() phía trên hoặc dùng fetch()
-             để gửi bất đồng bộ rồi tự hiển thị thông báo.
-
-        2) EmailJS:
-           - Nhúng SDK EmailJS vào index.html.
-           - Gọi: emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', contactForm)
-             .then(() => { hiển thị thông báo thành công })
-             .catch((err) => { xử lý lỗi });
-
-        3) Backend riêng:
-           - fetch('/api/contact', {
-               method: 'POST',
-               headers: { 'Content-Type': 'application/json' },
-               body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
-             })
-             .then(res => res.json())
-             .then(() => { hiển thị thông báo thành công });
-        ------------------------------------------------------
-      */
-
-      // Vì đây là website tĩnh, ta chỉ mô phỏng gửi thành công:
-      formSuccess.textContent =
-        "✅ Cảm ơn bạn! Tin nhắn đã được gửi thành công. Tôi sẽ phản hồi sớm nhất có thể.";
-      formSuccess.classList.add("show");
-
-      contactForm.reset();
-
-      // Xoá thông báo sau vài giây (tuỳ chọn)
-      setTimeout(() => {
+      const clearStatus = () => {
         formSuccess.classList.remove("show");
         formSuccess.textContent = "";
-      }, 6000);
+      };
+
+      // Gửi tin nhắn thật qua FormSubmit (đổi endpoint nếu dùng dịch vụ khác)
+      const FORM_ENDPOINT = "https://formsubmit.co/bangvn71@gmail.com";
+
+      submitBtn.disabled = true;
+      const originalLabel = submitBtn.innerHTML;
+      submitBtn.innerHTML = "Đang gửi...";
+
+      fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(contactForm),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("Gửi thất bại");
+          showStatus(
+            "✅ Cảm ơn bạn! Tin nhắn đã được gửi thành công. Tôi sẽ phản hồi sớm nhất có thể.",
+          );
+          contactForm.reset();
+          setTimeout(clearStatus, 6000);
+        })
+        .catch(() => {
+          showStatus(
+            "❌ Không gửi được tin nhắn lúc này. Bạn vui lòng gửi email trực tiếp tới bangvn71@gmail.com nhé!",
+            true,
+          );
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalLabel;
+        });
     });
   }
-
-  /* ---------------------------------------------------------
-     6. NAVBAR: hiệu ứng nhỏ khi cuộn trang (tuỳ chọn, giữ đơn giản)
-  --------------------------------------------------------- */
-  const navbar = document.getElementById("navbar");
-  let lastScrollY = window.scrollY;
-
-  window.addEventListener("scroll", () => {
-    const currentScrollY = window.scrollY;
-
-    if (currentScrollY > 10) {
-      navbar.style.boxShadow = "0 4px 0 #111111";
-    } else {
-      navbar.style.boxShadow = "none";
-    }
-
-    lastScrollY = currentScrollY;
-  });
 });

@@ -20,7 +20,8 @@ Tôi yêu thích phát triển website, thiết kế giao diện và luôn khôn
 - 🎯 Scroll Spy tự động đánh dấu menu đang xem
 - 🚀 Cuộn mượt (Smooth Scroll)
 - 💼 Hiển thị dự án dạng Card
-- 📧 Form liên hệ có kiểm tra dữ liệu bằng JavaScript
+- 📧 Form liên hệ có kiểm tra dữ liệu bằng JavaScript, gửi email thật qua [FormSubmit](https://formsubmit.co)
+- 🌙 Nút đổi chế độ sáng / tối (mặc định nền trắng, lưu lựa chọn bằng localStorage)
 - 🔝 Nút quay lại đầu trang (Back to Top)
 - ♿ Hỗ trợ Accessibility cơ bản (ARIA, Focus State)
 - ⚡ Không sử dụng Framework
@@ -140,10 +141,6 @@ Bạn có thể thay đổi:
 GitHub
 
 https://github.com/bangtmp
-
-LinkedIn
-
-https://linkedin.com/in/
 
 Email
 

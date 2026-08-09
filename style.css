@@ -7,12 +7,15 @@
 :root {
   /* Bảng màu */
   --color-bg: #fff8e7;
+  --color-bg-alt: #fffdf5;
+  --color-surface: #ffffff;
   --color-primary: #ffd166;
   --color-secondary: #ff6b6b;
   --color-accent: #4ecdc4;
   --color-extra: #a78bfa;
   --color-ink: #111111;
-  --color-white: #ffffff;
+  --color-on-accent: #111111;
+  --color-success: #1a7a4c;
 
   /* Viền & bóng đổ (Neo-brutalism) */
   --border-width: 4px;
@@ -32,6 +35,21 @@
   /* Khoảng cách */
   --container-width: 1140px;
   --section-padding: 100px;
+}
+
+/* Chế độ tối: bật bằng nút đổi màu (class .dark trên <html>), mặc định trắng */
+html.dark {
+  --color-bg: #15171b;
+  --color-bg-alt: #1a1d23;
+  --color-surface: #22252d;
+  --color-ink: #eceef1;
+  --color-success: #5fdf94;
+}
+
+/* Chip đánh số tiêu đề: nền vàng + chữ tối cho rõ ràng */
+html.dark .title-mark {
+  background: var(--color-primary);
+  color: var(--color-on-accent);
 }
 
 /* ---------- RESET CƠ BẢN ---------- */
@@ -96,7 +114,6 @@ textarea:focus-visible {
 /* ---------- LỚP DÙNG CHUNG ---------- */
 .section {
   padding: var(--section-padding) 20px;
-  transition: background-color 0.4s ease;
 }
 
 /* Xen kẽ màu nền nhẹ giữa các section để việc chuyển section rõ ràng hơn khi cuộn */
@@ -105,7 +122,7 @@ textarea:focus-visible {
 }
 
 .skills {
-  background-color: #fffdf5;
+  background-color: var(--color-bg-alt);
 }
 
 .projects {
@@ -113,7 +130,7 @@ textarea:focus-visible {
 }
 
 .contact {
-  background-color: #fffdf5;
+  background-color: var(--color-bg-alt);
 }
 
 .section-container {
@@ -158,7 +175,7 @@ textarea:focus-visible {
   border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-hard);
-  background: var(--color-white);
+  background: var(--color-surface);
   color: var(--color-ink);
   cursor: pointer;
   transition:
@@ -179,14 +196,16 @@ textarea:focus-visible {
 
 .btn-primary {
   background: var(--color-primary);
+  color: var(--color-on-accent);
 }
 
 .btn-secondary {
   background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .btn-outline {
-  background: var(--color-white);
+  background: var(--color-surface);
 }
 
 .btn-sm {
@@ -224,6 +243,11 @@ textarea:focus-visible {
   border-bottom: var(--border);
 }
 
+/* Bóng đổ xuất hiện khi cuộn (được toggle bằng JS qua class is-scrolled) */
+.navbar.is-scrolled {
+  box-shadow: 0 4px 0 var(--color-ink);
+}
+
 .nav-container {
   max-width: var(--container-width);
   margin: 0 auto;
@@ -247,6 +271,46 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-left: auto; /* đẩy menu về bên phải, cạnh các nút phụ */
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 24px; /* tách nhóm nút phụ khỏi menu điều hướng */
+}
+
+/* Nút đổi chế độ sáng / tối */
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border);
+  border-radius: 8px;
+  background: var(--color-primary);
+  color: var(--color-on-accent);
+  box-shadow: var(--shadow-hard-sm);
+  transition: transform 0.15s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+}
+
+/* Mặc định (trắng): hiện icon mặt trăng; khi ở chế độ tối: hiện icon mặt trời */
+.theme-toggle .fa-sun {
+  display: none;
+}
+
+html.dark .theme-toggle .fa-moon {
+  display: none;
+}
+
+html.dark .theme-toggle .fa-sun {
+  display: inline-block;
 }
 
 .nav-link {
@@ -271,7 +335,7 @@ textarea:focus-visible {
 /* Trạng thái active: link tương ứng với section đang hiển thị trên màn hình */
 .nav-link.is-active {
   background: var(--color-ink);
-  color: var(--color-white);
+  color: var(--color-bg);
   box-shadow: 3px 3px 0 var(--color-secondary);
 }
 
@@ -281,14 +345,14 @@ textarea:focus-visible {
 
 .nav-link--cta {
   background: var(--color-ink);
-  color: var(--color-white);
+  color: var(--color-bg);
   border: 2px solid var(--color-ink);
   box-shadow: 4px 4px 0 var(--color-secondary);
 }
 
 .nav-link--cta:hover {
   background: var(--color-secondary);
-  color: var(--color-ink);
+  color: var(--color-on-accent);
 }
 
 /* Nút hamburger (ẩn trên desktop) */
@@ -306,7 +370,7 @@ textarea:focus-visible {
 .hamburger-bar {
   width: 24px;
   height: 3px;
-  background: var(--color-ink);
+  background: var(--color-on-accent);
   border-radius: 2px;
   transition:
     transform 0.25s ease,
@@ -353,6 +417,7 @@ textarea:focus-visible {
   font-size: 0.85rem;
   font-weight: 600;
   background: var(--color-accent);
+  color: var(--color-on-accent);
   border: 3px solid var(--color-ink);
   border-radius: 30px;
   padding: 8px 16px;
@@ -420,7 +485,7 @@ textarea:focus-visible {
   gap: 10px;
   font-family: var(--font-display);
   font-weight: 600;
-  color: var(--color-ink);
+  color: var(--color-on-accent);
 }
 
 .avatar-placeholder i {
@@ -436,7 +501,8 @@ textarea:focus-visible {
   border-radius: 8px;
   padding: 8px 14px;
   box-shadow: var(--shadow-hard-sm);
-  background: var(--color-white);
+  background: var(--color-surface);
+  color: var(--color-on-accent);
 }
 
 .avatar-sticker--1 {
@@ -539,7 +605,7 @@ textarea:focus-visible {
 }
 
 .about-card {
-  background: var(--color-white);
+  background: var(--color-surface);
   border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-hard);
@@ -557,6 +623,7 @@ textarea:focus-visible {
 
 .about-card--accent {
   background: var(--color-primary);
+  color: var(--color-on-accent);
 }
 
 .about-list li {
@@ -582,7 +649,7 @@ textarea:focus-visible {
 }
 
 .skill-card {
-  background: var(--color-white);
+  background: var(--color-surface);
   border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-hard-sm);
@@ -621,14 +688,17 @@ textarea:focus-visible {
 
 .skill-tag--learning {
   background: var(--color-extra);
+  color: var(--color-on-accent);
 }
 
 .skill-tag--basic {
   background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .skill-tag--build {
   background: var(--color-primary);
+  color: var(--color-on-accent);
 }
 
 /* =========================================================
@@ -641,7 +711,7 @@ textarea:focus-visible {
 }
 
 .project-card {
-  background: var(--color-white);
+  background: var(--color-surface);
   border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-hard);
@@ -655,6 +725,21 @@ textarea:focus-visible {
 .project-card:hover {
   transform: translate(-4px, -4px);
   box-shadow: 12px 12px 0 var(--color-ink);
+}
+
+/* Card placeholder cho dự án sắp ra mắt */
+.project-card--placeholder {
+  border-style: dashed;
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.project-card--placeholder:hover {
+  box-shadow: var(--shadow-hard);
+}
+
+.project-card--placeholder .project-thumb {
+  background: var(--color-extra);
+  opacity: 0.85;
 }
 
 .project-thumb {
@@ -725,7 +810,7 @@ textarea:focus-visible {
 }
 
 .contact-form {
-  background: var(--color-white);
+  background: var(--color-surface);
   border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-hard);
@@ -783,8 +868,12 @@ textarea:focus-visible {
 .form-success {
   margin-top: 16px;
   font-weight: 600;
-  color: #1a7a4c;
+  color: var(--color-success);
   min-height: 20px;
+}
+
+.form-success.is-error {
+  color: var(--color-secondary);
 }
 
 .form-success.show {
@@ -793,7 +882,7 @@ textarea:focus-visible {
 
 .contact-social {
   background: var(--color-ink);
-  color: var(--color-white);
+  color: var(--color-bg);
   border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-hard);
@@ -818,9 +907,9 @@ textarea:focus-visible {
   gap: 12px;
   font-family: var(--font-display);
   font-weight: 600;
-  background: var(--color-white);
+  background: var(--color-surface);
   color: var(--color-ink);
-  border: 3px solid var(--color-white);
+  border: 3px solid var(--color-surface);
   border-radius: 8px;
   padding: 12px 16px;
   transition:
@@ -831,6 +920,7 @@ textarea:focus-visible {
 .social-link:hover {
   transform: translateX(6px);
   background: var(--color-primary);
+  color: var(--color-on-accent);
 }
 
 .social-link i {
@@ -842,7 +932,7 @@ textarea:focus-visible {
    ========================================================= */
 .footer {
   background: var(--color-ink);
-  color: var(--color-white);
+  color: var(--color-bg);
   border-top: var(--border);
   padding: 32px 20px;
 }
@@ -874,7 +964,7 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--color-white);
+  border: 2px solid var(--color-bg);
   border-radius: 8px;
   font-size: 1.1rem;
   transition:
@@ -884,7 +974,7 @@ textarea:focus-visible {
 
 .footer-social a:hover {
   background: var(--color-primary);
-  color: var(--color-ink);
+  color: var(--color-on-accent);
 }
 
 .back-to-top {
@@ -894,11 +984,20 @@ textarea:focus-visible {
   align-items: center;
   justify-content: center;
   background: var(--color-primary);
-  color: var(--color-ink);
+  color: var(--color-on-accent);
   border: var(--border);
   border-radius: 8px;
   box-shadow: var(--shadow-hard-sm);
-  transition: transform 0.15s ease;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .back-to-top:hover {
@@ -919,11 +1018,12 @@ textarea:focus-visible {
   }
 }
 
-.fade-up {
+/* Chỉ ẩn ban đầu khi JS chạy được; nếu JS hỏng/lỗi, nội dung vẫn hiển thị */
+.js .fade-up {
   opacity: 0;
 }
 
-.fade-up.is-visible {
+.js .fade-up.is-visible {
   animation: fadeInUp 0.7s ease forwards;
 }
 
