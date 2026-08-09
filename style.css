@@ -114,6 +114,14 @@ textarea:focus-visible {
 /* ---------- LỚP DÙNG CHUNG ---------- */
 .section {
   padding: var(--section-padding) 20px;
+  position: relative;
+}
+
+.section-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 /* Xen kẽ màu nền nhẹ giữa các section để việc chuyển section rõ ràng hơn khi cuộn */
@@ -133,9 +141,58 @@ textarea:focus-visible {
   background-color: var(--color-bg-alt);
 }
 
-.section-container {
-  max-width: var(--container-width);
-  margin: 0 auto;
+/* Hình trang trí động cho các section (chung, dùng chung keyframe với hero) */
+.shape {
+  position: absolute;
+  border: var(--border);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.shape--circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  animation: floatShape 7s ease-in-out infinite;
+}
+
+.shape--square {
+  width: 44px;
+  height: 44px;
+  background: var(--color-accent);
+  animation: spinShape 12s linear infinite;
+}
+
+.shape--triangle {
+  width: 0;
+  height: 0;
+  border-left: 28px solid transparent;
+  border-right: 28px solid transparent;
+  border-bottom: 50px solid var(--color-extra);
+  border-top: none;
+  filter: drop-shadow(3px 3px 0 var(--color-ink));
+  animation: bobShape 6s ease-in-out infinite;
+}
+
+.shape--tl {
+  top: 26px;
+  left: 26px;
+}
+
+.shape--tr {
+  top: 30px;
+  right: 34px;
+}
+
+.shape--bl {
+  bottom: 30px;
+  left: 34px;
+}
+
+.shape--br {
+  bottom: 26px;
+  right: 26px;
 }
 
 .section-title {
@@ -219,7 +276,7 @@ textarea:focus-visible {
 }
 
 .btn--locked {
-  cursor: not-allowed;
+  cursor: default;
   opacity: 0.55;
   box-shadow: var(--shadow-hard-sm);
 }
@@ -261,6 +318,24 @@ textarea:focus-visible {
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
+}
+
+.logo-short {
+  display: inline;
+}
+
+.logo-full {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .logo-short {
+    display: none;
+  }
+
+  .logo-full {
+    display: inline;
+  }
 }
 
 .logo-dot {
@@ -319,6 +394,7 @@ html.dark .theme-toggle .fa-sun {
   font-size: 0.95rem;
   padding: 8px 14px;
   border-radius: 6px;
+  white-space: nowrap; /* chống link bị wrap xuống 2 dòng */
   transition:
     background 0.15s ease,
     transform 0.15s ease,
@@ -478,8 +554,16 @@ html.dark .theme-toggle .fa-sun {
   overflow: hidden;
 }
 
+.avatar-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder chỉ hiện khi ảnh không tải được (class is-fallback) */
 .avatar-placeholder {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   gap: 10px;
@@ -490,6 +574,14 @@ html.dark .theme-toggle .fa-sun {
 
 .avatar-placeholder i {
   font-size: 3.5rem;
+}
+
+.avatar-frame.is-fallback .avatar-placeholder {
+  display: flex;
+}
+
+.avatar-frame.is-fallback img {
+  display: none;
 }
 
 .avatar-sticker {
@@ -754,6 +846,15 @@ html.dark .theme-toggle .fa-sun {
 .project-thumb i {
   font-size: 3.5rem;
   color: var(--color-ink);
+}
+
+.project-thumb img {
+  max-width: 70%;
+  max-height: 130px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .project-body {
@@ -1115,7 +1216,8 @@ html.dark .theme-toggle .fa-sun {
     box-shadow: none;
   }
 
-  .hero-shape {
+  .hero-shape,
+  .shape {
     display: none; /* tránh rối mắt trên màn hình nhỏ */
   }
 

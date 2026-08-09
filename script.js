@@ -98,8 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---------------------------------------------------------
      3. CUỘN MƯỢT ĐẾN SECTION (bổ sung cho scroll-behavior CSS
         để đảm bảo hoạt động tốt trên mọi trình duyệt)
+        - Áp dụng cho cả logo HHB để không hiện #trang-chu trên URL
   --------------------------------------------------------- */
-  navLinks.forEach((link) => {
+  const scrollLinks = document.querySelectorAll(".nav-link, a.logo");
+
+  scrollLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       const targetId = link.getAttribute("href");
       if (targetId && targetId.startsWith("#")) {

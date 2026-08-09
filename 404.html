@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="vi" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Không tìm thấy trang | Huỳnh Hữu Bằng</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#fff8e7" />
+    <style>
+      :root {
+        --color-bg: #fff8e7;
+        --color-primary: #ffd166;
+        --color-secondary: #ff6b6b;
+        --color-accent: #4ecdc4;
+        --color-extra: #a78bfa;
+        --color-ink: #111111;
+        --border-width: 4px;
+        --border: var(--border-width) solid var(--color-ink);
+        --shadow-hard: 6px 6px 0 var(--color-ink);
+        --radius: 10px;
+        --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html.dark {
+        --color-bg: #15171b;
+        --color-ink: #eceef1;
+      }
+
+      body {
+        font-family: var(--font-display);
+        background-color: var(--color-bg);
+        color: var(--color-ink);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .error-card {
+        text-align: center;
+        max-width: 480px;
+        width: 100%;
+        background: var(--color-primary);
+        border: var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-hard);
+        padding: 48px 32px;
+      }
+
+      .error-code {
+        font-size: clamp(4rem, 15vw, 6rem);
+        font-weight: 700;
+        line-height: 1;
+        color: var(--color-secondary);
+        text-shadow: 4px 4px 0 var(--color-ink);
+      }
+
+      .error-title {
+        font-size: 1.5rem;
+        margin: 16px 0 10px;
+      }
+
+      .error-desc {
+        font-size: 1rem;
+        opacity: 0.85;
+        margin-bottom: 28px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 14px 28px;
+        border: var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-hard);
+        background: var(--color-bg);
+        color: var(--color-ink);
+        text-decoration: none;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .btn:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 8px 8px 0 var(--color-ink);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="error-card">
+      <p class="error-code">404</p>
+      <h1 class="error-title">Không tìm thấy trang</h1>
+      <p class="error-desc">
+        Trang bạn tìm kiếm không tồn tại hoặc đã bị di chuyển.
+      </p>
+      <a href="/" class="btn">← Quay về trang chủ</a>
+    </main>
+
+    <script>
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </body>
+</html>

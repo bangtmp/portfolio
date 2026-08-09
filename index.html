@@ -17,18 +17,18 @@
       }
     </script>
 
-    <link rel="canonical" href="https://github.com/bangtmp/portfolio" />
+    <link rel="canonical" href="https://huynhhuubang.com" />
 
     <!-- Open Graph / Twitter Card: hiển thị đẹp khi chia sẻ lên mạng xã hội -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://github.com/bangtmp/portfolio" />
+    <meta property="og:url" content="https://huynhhuubang.com" />
     <meta property="og:title" content="Huỳnh Hữu Bằng | Fullstack Developer" />
     <meta
       property="og:description"
       content="Portfolio cá nhân của Huỳnh Hữu Bằng - Sinh viên năm nhất ngành Công nghệ thông tin, đam mê lập trình web và thiết kế giao diện."
     />
-    <!-- Kích thước khuyến nghị 1200x630, thay bằng ảnh thật sau khi deploy -->
-    <meta property="og:image" content="assets/og-image.png" />
+    <!-- Kích thước khuyến nghị 1200x630 -->
+    <meta property="og:image" content="https://huynhhuubang.com/assets/avatar.jpg" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Huỳnh Hữu Bằng | Fullstack Developer" />
     <meta
@@ -42,7 +42,7 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Huỳnh Hữu Bằng",
-        "url": "https://github.com/bangtmp/portfolio",
+        "url": "https://huynhhuubang.com",
         "email": "mailto:bangvn71@gmail.com",
         "sameAs": ["https://github.com/bangtmp"],
         "jobTitle": "Sinh viên Công nghệ thông tin",
@@ -79,7 +79,12 @@
     <!-- ======================= NAVIGATION ======================= -->
     <header class="navbar" id="navbar">
       <nav class="nav-container">
-        <a href="#trang-chu" class="logo">HHB<span class="logo-dot">.</span></a>
+        <a href="#trang-chu" class="logo">
+          <span class="logo-short">HHB<span class="logo-dot">.com</span></span>
+          <span class="logo-full"
+            >HuynhHuuBang<span class="logo-dot">.com</span></span
+          >
+        </a>
 
         <ul class="nav-menu" id="nav-menu">
           <li><a href="#trang-chu" class="nav-link">Trang chủ</a></li>
@@ -148,10 +153,18 @@
           </div>
 
           <div class="hero-avatar-wrap fade-up">
-            <div class="avatar-frame">
-              <!-- Thay ảnh đại diện tại đây: chèn thẻ <img src="assets/avatar.jpg" alt="Ảnh đại diện Huỳnh Hữu Bằng"> -->
-              <div class="avatar-placeholder">
-                <i class="fa-solid fa-code" aria-hidden="true"></i>
+            <div class="avatar-frame" id="avatar-frame">
+              <img
+                id="avatar-img"
+                src="assets/avatar.jpg"
+                alt="Ảnh đại diện Huỳnh Hữu Bằng"
+                width="280"
+                height="280"
+                fetchpriority="high"
+                onerror="this.closest('.avatar-frame').classList.add('is-fallback')"
+              />
+              <div class="avatar-placeholder" aria-hidden="true">
+                <i class="fa-solid fa-code"></i>
                 <span>Ảnh đại diện</span>
               </div>
             </div>
@@ -163,6 +176,8 @@
 
       <!-- ======================= GIỚI THIỆU ======================= -->
       <section id="gioi-thieu" class="section about">
+        <div class="shape shape--circle shape--tl" aria-hidden="true"></div>
+        <div class="shape shape--triangle shape--br" aria-hidden="true"></div>
         <div class="section-container">
           <h2 class="section-title fade-up">
             <span class="title-mark">01</span> Giới thiệu về tôi
@@ -190,7 +205,7 @@
               <h3>Mục tiêu của tôi 🎯</h3>
               <ul class="about-list">
                 <li>
-                  <i class="fa-solid fa-check"></i> Trở thành Front-end / Web
+                  <i class="fa-solid fa-check"></i> Trở thành Fullstack
                   Developer chuyên nghiệp
                 </li>
                 <li>
@@ -213,6 +228,8 @@
 
       <!-- ======================= KỸ NĂNG ======================= -->
       <section id="ky-nang" class="section skills">
+        <div class="shape shape--square shape--tr" aria-hidden="true"></div>
+        <div class="shape shape--circle shape--bl" aria-hidden="true"></div>
         <div class="section-container">
           <h2 class="section-title fade-up">
             <span class="title-mark">02</span> Kỹ năng
@@ -295,6 +312,8 @@
 
       <!-- ======================= DỰ ÁN ======================= -->
       <section id="du-an" class="section projects">
+        <div class="shape shape--triangle shape--tl" aria-hidden="true"></div>
+        <div class="shape shape--square shape--br" aria-hidden="true"></div>
         <div class="section-container">
           <h2 class="section-title fade-up">
             <span class="title-mark">03</span> Dự án
@@ -307,7 +326,13 @@
             <!-- ===== BẮT ĐẦU: PROJECT CARD (sao chép khối này để thêm dự án mới) ===== -->
             <article class="project-card fade-up">
               <div class="project-thumb">
-                <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+                <img
+                  src="assets/images/tmpbox-logo.png"
+                  alt="Logo TmpBox.me"
+                  width="180"
+                  height="180"
+                  loading="lazy"
+                />
               </div>
               <div class="project-body">
                 <h3 class="project-title">TmpBox.me</h3>
@@ -410,6 +435,8 @@
 
       <!-- ======================= LIÊN HỆ ======================= -->
       <section id="lien-he" class="section contact">
+        <div class="shape shape--circle shape--tr" aria-hidden="true"></div>
+        <div class="shape shape--triangle shape--bl" aria-hidden="true"></div>
         <div class="section-container">
           <h2 class="section-title fade-up">
             <span class="title-mark">04</span> Hãy kết nối với tôi

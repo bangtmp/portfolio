@@ -46,9 +46,12 @@ portfolio/
 ├── index.html
 ├── style.css
 ├── script.js
+├── sitemap.xml      <- bản đồ trang cho Google
+├── robots.txt       <- hướng dẫn crawler
+├── 404.html         <- trang lỗi 404 tùy chỉnh
 ├── assets/
 │   ├── avatar.jpg
-│   ├── favicon.ico
+│   ├── og-image.png
 │   └── images/
 │
 └── README.md
@@ -119,6 +122,18 @@ Có thể deploy miễn phí bằng:
 - GitHub Pages
 - Netlify
 - Vercel
+
+---
+
+## 🔍 Tối ưu index trên Google
+
+1. **Deploy** website lên `https://huynhhuubang.com`.
+2. Vào [Google Search Console](https://search.google.com/search-console), thêm property **URL prefix**: `https://huynhhuubang.com/` và xác minh quyền sở hữu.
+3. Trong mục **Sitemaps**, gửi: `sitemap.xml`.
+4. Dùng tính năng **URL Inspection** để yêu cầu Google thu thập trang chủ.
+5. Sau khi site được index, kiểm tra mục **Enhancements** để xem rich result (dữ liệu JSON-LD Person).
+
+Các file hỗ trợ đã có sẵn: `sitemap.xml`, `robots.txt`, `404.html`.
 
 ---
 
