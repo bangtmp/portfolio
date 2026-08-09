@@ -127,9 +127,9 @@ Có thể deploy miễn phí bằng:
 
 ## 🔍 Tối ưu index trên Google
 
-1. **Deploy** website lên `https://huynhhuubang.com`.
-2. Vào [Google Search Console](https://search.google.com/search-console), thêm property **URL prefix**: `https://huynhhuubang.com/` và xác minh quyền sở hữu.
-3. Trong mục **Sitemaps**, gửi: `sitemap.xml`.
+1. **Deploy** website lên `https://www.huynhhuubang.com` (bản deploy chuẩn là có `www`).
+2. Vào [Google Search Console](https://search.google.com/search-console), thêm property **URL prefix**: `https://www.huynhhuubang.com/` và xác minh quyền sở hữu.
+3. Trong mục **Sitemaps**, gửi: `https://www.huynhhuubang.com/sitemap.xml`.
 4. Dùng tính năng **URL Inspection** để yêu cầu Google thu thập trang chủ.
 5. Sau khi site được index, kiểm tra mục **Enhancements** để xem rich result (dữ liệu JSON-LD Person).
 
