@@ -76,6 +76,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <a class="skip-link" href="#trang-chu">Bỏ qua điều hướng</a>
+
     <!-- ======================= NAVIGATION ======================= -->
     <header class="navbar" id="navbar">
       <nav class="nav-container">
@@ -138,7 +140,7 @@
             <p class="hero-greeting">Xin chào, tôi là</p>
             <h1 class="hero-title">Huỳnh Hữu Bằng</h1>
             <p class="hero-role">
-              Sinh viên Công nghệ thông tin | Fullstack Developer tương lai
+              Sinh viên Công nghệ thông tin <span class="role-sep" aria-hidden="true">|</span> <span class="nowrap">Fullstack Developer tương lai</span>
             </p>
             <p class="hero-desc">
               Tôi đam mê biến ý tưởng thành những trang web đẹp, dùng được và
@@ -455,6 +457,7 @@
                   id="name"
                   name="name"
                   placeholder="Nguyễn Văn A"
+                  autocomplete="name"
                   required
                 />
                 <span class="form-error" id="name-error"></span>
@@ -467,6 +470,7 @@
                   id="email"
                   name="email"
                   placeholder="[email protected]"
+                  autocomplete="email"
                   required
                 />
                 <span class="form-error" id="email-error"></span>
