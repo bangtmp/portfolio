@@ -191,12 +191,16 @@ textarea {
   background-color: var(--color-bg-alt);
 }
 
-.projects {
+.roadmap {
   background-color: var(--color-bg);
 }
 
-.contact {
+.projects {
   background-color: var(--color-bg-alt);
+}
+
+.contact {
+  background-color: var(--color-bg);
 }
 
 /* Hình trang trí động cho các section (chung, dùng chung keyframe với hero) */
@@ -855,6 +859,187 @@ html.dark .theme-toggle .fa-sun {
 }
 
 /* =========================================================
+   LỘ TRÌNH
+   ========================================================= */
+.roadmap-list {
+  list-style: none;
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.roadmap-item {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 28px;
+}
+
+.roadmap-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Đoạn timeline của từng giai đoạn: bắt đầu đúng tại đỉnh node, kéo dài tới
+   đỉnh node kế tiếp (qua khoảng cách 28px); node cuối chỉ kéo tới đáy node
+   của chính nó. Bóng đổ cứng tô màu song song đúng ngôn ngữ Neo-brutalism */
+.roadmap-item::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 36.6px;
+  bottom: -64.6px;
+  width: 8px;
+  background: var(--color-ink);
+}
+
+.roadmap-item:first-child::before {
+  top: 41px; /* thụt xuống để node che phần đầu line, không nhô lên */
+}
+
+.roadmap-item:last-child::before {
+  bottom: auto;
+  height: 32px; /* kết thúc phía sau đáy node cuối, không nhô xuống */
+}
+
+/* Dấu mốc hình kim cương trên đường timeline */
+.roadmap-node {
+  position: absolute;
+  left: 4px;
+  top: 42px;
+  width: 26px;
+  height: 26px;
+  border: var(--border);
+  transform: rotate(45deg);
+  background: var(--color-primary);
+  box-shadow: 3px 3px 0 var(--color-ink);
+}
+
+/* "Con ốc" ở giữa mỗi dấu mốc, xoay ngược để thẳng hàng với trang */
+.roadmap-node::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-ink);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.roadmap-item:nth-child(2) .roadmap-node {
+  background: var(--color-secondary);
+}
+
+.roadmap-item:nth-child(3) .roadmap-node {
+  background: var(--color-accent);
+}
+
+.roadmap-item:nth-child(4) .roadmap-node {
+  background: var(--color-extra);
+}
+
+/* Dấu mốc của giai đoạn hiện tại: vòng vàng nổi bật, nối với card vàng */
+.roadmap-item--current .roadmap-node {
+  box-shadow:
+    0 0 0 4px var(--color-primary),
+    4px 4px 0 var(--color-ink);
+}
+
+.roadmap-card {
+  background: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard);
+  padding: 28px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.roadmap-item--current .roadmap-card {
+  background: var(--color-primary);
+  color: var(--color-on-accent);
+}
+
+.roadmap-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0 var(--color-ink);
+}
+
+.roadmap-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.roadmap-num {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: var(--color-primary);
+  color: var(--color-on-accent);
+  border: var(--border);
+  border-radius: 8px;
+  padding: 4px 10px;
+  box-shadow: 3px 3px 0 var(--color-ink);
+}
+
+.roadmap-item:nth-child(2) .roadmap-num {
+  background: var(--color-secondary);
+}
+
+.roadmap-item:nth-child(3) .roadmap-num {
+  background: var(--color-accent);
+}
+
+.roadmap-item:nth-child(4) .roadmap-num {
+  background: var(--color-extra);
+}
+
+.roadmap-item--current .roadmap-num {
+  background: #111111;
+  color: var(--color-primary);
+  box-shadow: 3px 3px 0 var(--color-secondary);
+}
+
+.roadmap-title {
+  font-size: 1.3rem;
+}
+
+/* Chip trạng thái của giai đoạn hiện tại */
+.roadmap-badge {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: #111111;
+  color: #fff8e7;
+  border: 2px solid #111111;
+  border-radius: 30px;
+  padding: 5px 14px;
+  margin-left: auto;
+  box-shadow: 3px 3px 0 var(--color-secondary);
+}
+
+.roadmap-desc {
+  opacity: 0.85;
+  margin-bottom: 16px;
+}
+
+.roadmap-item--current .roadmap-desc {
+  opacity: 1;
+}
+
+/* Tag công nghệ trên card nền vàng: luôn dùng chip sáng + chữ tối
+   vì nền vàng giữ nguyên ở cả hai chế độ (đảm bảo tương phản) */
+.roadmap-item--current .project-tech li {
+  background: #ffffff;
+  color: #111111;
+  border-color: #111111;
+}
+
+/* =========================================================
    DỰ ÁN
    ========================================================= */
 .projects-grid {
@@ -1323,6 +1508,30 @@ html.dark .theme-toggle .fa-sun {
   .avatar-frame {
     width: 180px;
     height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .roadmap-item {
+    padding-left: 44px;
+  }
+
+  .roadmap-item::before {
+    left: 9px;
+  }
+
+  .roadmap-node {
+    left: 0;
+    width: 26px;
+    height: 26px;
+  }
+
+  .roadmap-card {
+    padding: 24px;
+  }
+
+  .roadmap-badge {
+    margin-left: 0;
   }
 }
 
