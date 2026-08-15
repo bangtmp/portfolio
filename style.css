@@ -1106,6 +1106,23 @@ html.dark .theme-toggle .fa-sun {
   display: block;
 }
 
+/* Thumbnail dạng screenshot: phủ kín khung, không chừa viền */
+.project-thumb--shot {
+  background: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-thumb--shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+}
+
 .project-body {
   padding: 24px;
   min-width: 0; /* cho phép nội dung con co lại thay vì đẩy tràn card */

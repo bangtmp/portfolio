@@ -53,6 +53,8 @@ portfolio/
 │   ├── avatar.jpg
 │   ├── og-image.png
 │   └── images/
+│       ├── tmpbox-logo.png
+│       └── booking-platform-thumb.webp
 │
 └── README.md
 ```
@@ -88,6 +90,25 @@ Hệ thống upload và chia sẻ file trực tuyến giúp người dùng tải
 
 🌐 Website:
 https://tmpbox.me
+
+### Booking Platform
+
+Nền tảng đặt lịch trực tuyến cho các cơ sở dịch vụ — chọn dịch vụ, xem khung giờ trống và xác nhận trong vài phút.
+
+**Công nghệ sử dụng**
+
+- Next.js
+- TypeScript
+- Prisma
+- PostgreSQL
+- Tailwind CSS
+- Better Auth
+
+🌐 Website:
+https://booking.huynhhuubang.com
+
+🔗 Mã nguồn:
+https://github.com/bangtmp/booking-platform
 
 ---
 
